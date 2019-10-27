@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>calculator</title>
+  <link rel ="stylesheet" href ="main.css"/>
+
+   
+</head>
+
+<body>
+  <center><p class ="top">Simple Javascript Calculator</p></center>
+    <div class ="container">
+         <!--    Display Result-->
+          <p class ="resCon">
+            <input type ="text" id ="rs" value =""/>
+          </p>
+          <div id="hidden">
+            <label for="cbutton">Scientific Mode</label><input type="checkbox" name="cbutton" id="hider" value="yes" onclick="hideAlert()">
+          </div>
+          <div class="grid-container">
+            <!-- Numbers   -->
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+
+            <button>6</button>
+            <button>7</button>
+            <button>8</button>
+            <button>9</button>
+            <button>0</button>
+
+<!--    Operators -->
+            <button>+</button>
+            <button>-</button>
+            <button>*</button>
+            <button>/</button>
+            <input  onClick ="javascript:result(this);"  id ="equals" value="=" type ="button">
+            <input  onClick ="javascript:result(this);"  id ="clear" value= "c"  type ="button">
+            <input    id ="mPlus" value= "m+"  type ="button">
+            <input    id ="mShow"  value= "m"  type ="button">
+          </div>
+
+          <div class="grid-container class2" id="hideme" style="display: none;">
+              <button>.</button>
+              <input  onclick="javascript:sqrt();"  id ="sqrt" value="&#8730"  type ="button">
+             <input  onclick ="javascript:square();"  id ="square" value= "x&sup2;"  type ="button">
+              <input  onclick ="javascript:sin();"  id ="sin" value= "sin"  type ="button">
+              <input  onclick ="javascript:cos();"  id ="cos" value= "cos"  type ="button">
+              <input  onclick ="javascript:tan();"  id ="tan" value= "tan"  type ="button">
+              <input  onclick ="javascript:ln();"  id ="ln" value= "ln"  type ="button">
+              <input  onclick ="javascript:log();"  id ="log" value= "log"  type ="button">
+              <input  onclick ="javascript:exp();"  id ="exp" value= "e"  type ="button">
+              <input  onclick ="javascript:atan();"  id ="taninv" value= "tan&#8315&sup1"  type ="button">
+              <input  onclick ="javascript:acos();"  id ="cosinv" value= "cos&#8315&sup1"  type ="button">
+              <input  onclick ="javascript:asin();"  id ="sininv" value= "sin&#8315&sup1"  type ="button">
+              
+
+          </div>
+
+    </div>
+    <center><p class ="top">By Anjorin Israel  <script>document.write(new Date());</script></p></center>
+
+    
+  <script>
+
+      // alert("I am still here don't Worry");
+      let button = document.getElementsByTagName('button');
+      let ans    = document.getElementById("rs");
+      let mPlus  = document.getElementById("mPlus");
+      let mShow  = document.getElementById("mShow");
+      ans.addEventListener("focus",function(){ans.value=""});
+      ans.addEventListener("focusout",function(){ans.value=""});
+      var getVals = function(){
+               for(let i =0;i<=button.length;++i){
+                button[i].onclick = function(){
+                   ans.value+=button[i].innerText;  
+                }
+            }
+      }
+
+      let ansArr  =[];
+        mPlus.addEventListener("click",function(){
+          ansArr[0]=(ans.value);
+        });
+      mShow.addEventListener("click",function(){
+        ans.value = Number(ansArr[0]);
+      });
+       
+      getVals();
+      function result(obj){
+         let opArr  = ["+","-","x","/","=","c"];
+         if(opArr.includes(obj.value)){
+            switch(obj.value){                
+                case 'c':
+                   ans.value ="";
+                break;
+
+                case '=':
+                ans.value =Number(eval(ans.value));
+                break;
+
+                default:
+                  ans.value =0;
+                break;
+
+            }
+         }
+      }
+
+      function sqrt(){
+        ans.value= Math.sqrt(ans.value);
+      }
+
+      function square()
+      {
+        ans.value = Math.pow(ans.value,2);
+      }
+
+      function sin(){
+        var sinum = ans.value;
+        if (isNaN(sinum)){
+          ans.value = "error";
+        }
+        else{
+          ans.value = Math.sin(sinum * Math.PI / 180);
+        }
+      }
+
+      function cos(){
+        var cosnum = ans.value;
+        if (isNaN(cosnum)){
+          ans.value = "error";
+        }
+        else{
+          ans.value = Math.cos(cosnum* Math.PI / 180);
+        }
+      }
+      
+      function tan(){
+        var tanum = ans.value;
+        if(isNaN(tanum)){
+          ans.value = "error";
+        }
+        else{
+          ans.value = Math.tan(tanum*Math.PI/180);
+        }
+      }
+
+      function exp(){
+        var expnum = ans.value;
+        if(isNaN(expnum)){
+          ans.value = "error";
+        }
+        else{
+          ans.value = Math.exp(expnum);
+        }
+      }
+
+      function ln(){
+        var lognum = ans.value;
+        if(isNaN(lognum)){
+          ans.value= "error";
+        }
+        else{
+          ans.value = Math.log(lognum);
+        }
+      }
+
+
+      function log(){
+        var lognum = ans.value;
+        if(isNaN(lognum)){
+          ans.value= "error";
+        }
+        else{
+          ans.value = Math.log10(lognum);
+        }
+      }
+      
+
+
+      function asin(){
+        var anglesin = ans.value;
+        if (isNaN(anglesin)){
+          ans.value = "error";
+        }
+        else {
+          evalue = Math.asin(anglesin)*180/Math.PI;
+          if(isNaN(evalue)){
+            ans.value = "error";
+          }
+          else {
+            ans.value = evalue;
+          }
+        }
+      }
+
+      function acos(){
+        var anglecos = ans.value;
+        if (isNaN(anglecos)){
+          ans.value = "error";
+        }
+        else {
+          evalue = Math.acos(anglecos)*180/Math.PI;
+          if(isNaN(evalue)){
+            ans.value = "error";
+          }
+          else {
+            ans.value = evalue;
+          }
+        }
+      }
+
+      function atan(){
+        var angletan = ans.value;
+        if (isNaN(angletan)){
+          ans.value = "error";
+        }
+        else {
+          evalue = Math.atan(angletan)*180/Math.PI;
+          if(isNaN(evalue)){
+            ans.value = "error";
+          }
+          else {
+            ans.value = evalue;
+          }
+        }
+      }
+
+
+      function hideAlert(){
+      if (document.getElementById("hider").checked){
+          document.getElementById("hideme").style.display="grid";
+
+      } else {
+        document.getElementById("hideme").style.display="none";
+
+      }
+      }
+  
+
+  
+        
+  </script>
+</body>
+</html>

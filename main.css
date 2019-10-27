@@ -1,0 +1,48 @@
+.container{
+    border:1px solid #da8585;
+    width: 40%;
+    padding:4px 8px;
+    height: 280px;
+    margin: 10% 30% 10% 30%;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: ". . . . ." ". . . . ." ". . . . ." ". . . . ." ". . . . . .";
+  }
+
+  .class2{
+      margin-top:-65px;
+  }
+
+  .resCon{
+      border-bottom: 1px solid #da8585;
+  }
+
+.top{
+    background-color: #da8585;
+    padding:4px;
+    color:#ffffff;
+}
+  #rs{
+      width:95%;
+      padding: 14px 8px;
+
+  }
+
+  button{
+      border:0px;
+      margin:1px;
+      padding: 8px;
+      background-color:antiquewhite;
+  }
+
+  input[type=button]{
+    border:0px;
+    margin:1px;
+    padding: 8px;
+    color:#ffffff;
+    background-color:rgb(148, 59, 77);
+  }
